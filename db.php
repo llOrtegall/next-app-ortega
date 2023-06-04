@@ -6,7 +6,8 @@ $user = 'root';
 $pass = '';
 
 try {
-    $conexcion = new PDO("mysql:host=$servidor;dbname=$baseDeDatos;$user,$pass");
-} catch (\Throwable $th) {
+    $conexcion = new PDO("mysql:host=$servidor;dbname=$baseDeDatos;user=$user;password=$pass");
+} catch (Exception $th) {
     //throw $th;
+    echo $th->getMessage();
 }
