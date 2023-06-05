@@ -19,7 +19,7 @@
                 <ul class="navbar-nav">
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Empleados</a>
+                        <a class="nav-link active" href="modules/empleados/">Empleados</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Cargos</a>
