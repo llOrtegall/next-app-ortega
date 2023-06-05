@@ -26,10 +26,10 @@ $url_base = "http://localhost/app/"
                         <a class="nav-link active" href="<?php echo $url_base; ?>modules/empleados/">Empleados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Cargos</a>
+                        <a class="nav-link active" href="<?php echo $url_base; ?>modules/cargos/">Cargos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Usuarios</a>
+                        <a class="nav-link active" href="<?php echo $url_base; ?>modules/usuarios/">Usuarios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Cerrar Session</a>
