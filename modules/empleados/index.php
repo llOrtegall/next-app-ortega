@@ -4,9 +4,12 @@
 <br />
 
 <div class="card">
+
     <div class="card-header">
-        Empleados
+        <a name="" id="" class="btn btn-primary" href="crear.php" role="button">
+            Agregar Registro</a>
     </div>
+
     <div class="card-body">
         <div class="table-responsive-sm">
             <table class="table">
@@ -27,7 +30,11 @@
                         <td>CV.pdf</td>
                         <td>Programador</td>
                         <td>2023/12/08</td>
-                        <td>Carta | Editar | Eliminar</td>
+                        <td>
+                            <a name="" id="" class="btn btn-primary" href="#" role="button">Carta</a> |
+                            <a name="" id="" class="btn btn-info" href="#" role="button">Editar</a> |
+                            <a name="" id="" class="btn btn-danger" href="#" role="button">Eliminar</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
