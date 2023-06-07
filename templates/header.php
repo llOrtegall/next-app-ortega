@@ -39,4 +39,4 @@ $url_base = "http://localhost/app/"
         </div>
     </nav>
 
-    <main class="container">
+    <main class="container-fluid d-flex justify-content-center">
