@@ -1,3 +1,20 @@
+<!-- //* Consulta Base De Datos -->
+<?php
+include("../../db.php");
+
+if ($_POST) {
+	print_r($_POST);
+	//* Recolectamos los datos del metodos POST
+	$nombrecargo = (isset($_POST["nombrecargo"]) ? $_POST["nombrecargo"] : "");
+	//* Preparar la insercción de los datos
+	$sentencia = $conexcion->prepare("INSERT INTO tbl_puestos(id, nombrecargo) VALUES (null, :nombrecargo)");
+	//* Asignando los valores que vienen del metodo POST (form)
+	$sentencia->bindParam(":nombrecargo", $nombrecargo);
+	$sentencia->execute();
+	header("Location: index.php");
+}
+?>
+
 <!-- //* Aqui Esta El Header -->
 <?php include('../../templates/header.php'); ?>
 
