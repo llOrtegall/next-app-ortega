@@ -1,5 +1,5 @@
 <?php
-$url_base = "http://localhost/app/"
+$url_base = "http://localhost/learning_php_01/"
 ?>
 
 <!doctype html>
