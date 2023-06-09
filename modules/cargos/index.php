@@ -49,7 +49,8 @@ $lista_tbl_cargos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
               <td scope="row"><?php echo $registro['id'] ?></td>
               <td><?php echo $registro['nombrecargo'] ?></td>
               <td>
-                <input name="btneditar" id="btneditar" class="btn btn-info" type="button" value="Editar"> |
+                <a class="btn btn-success" href="editar.php?txtID=<?php echo $registro['id']; ?>" role="button">Editar</a>
+                |
                 <a class="btn btn-danger" href="index.php?txtID=<?php echo $registro['id']; ?>" role="button">Eliminar</a>
               </td>
             </tr>
