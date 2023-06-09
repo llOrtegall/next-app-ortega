@@ -2,6 +2,17 @@
 <?php
 include("../../db.php");
 
+//* para borrar los datos de la base de datos
+if (isset($_GET['txtID'])) {
+  $textID = (isset($_GET['txtID'])) ? $_GET['txtID'] : "";
+
+  $sentencia = $conexcion->prepare("DELETE FROM tbl_puestos WHERE id=:id");
+  $sentencia->bindParam(":id", $textID);
+  $sentencia->execute();
+
+  header("Location: index.php");
+}
+
 $sentencia = $conexcion->prepare("SELECT * FROM `tbl_puestos`");
 $sentencia->execute();
 $lista_tbl_cargos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -39,7 +50,7 @@ $lista_tbl_cargos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
               <td><?php echo $registro['nombrecargo'] ?></td>
               <td>
                 <input name="btneditar" id="btneditar" class="btn btn-info" type="button" value="Editar"> |
-                <input name="btneliminar" id="btneliminar" class="btn btn-danger" type="button" value="Borrar">
+                <a class="btn btn-danger" href="index.php?txtID=<?php echo $registro['id']; ?>" role="button">Eliminar</a>
               </td>
             </tr>
           <?php } ?>
