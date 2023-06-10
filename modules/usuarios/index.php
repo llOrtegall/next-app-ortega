@@ -7,10 +7,10 @@ $lista_tbl_usuarios = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 //* Borrar Usuarios
 if (isset($_GET['txtID'])) {
-  $textID = (isset($_GET['txtID'])) ? $_GET['txtID'] : "";
+  $txtID = (isset($_GET['txtID'])) ? $_GET['txtID'] : "";
 
   $sentencia = $conexcion->prepare("DELETE FROM tbl_usuarios WHERE id=:id");
-  $sentencia->bindParam(":id", $textID);
+  $sentencia->bindParam(":id", $txtID);
   $sentencia->execute();
 
   header("Location: index.php");

@@ -1,7 +1,6 @@
 <?php
 include("../../db.php");
 if ($_POST) {
-  print_r($_POST);
 
   //*Recolectamos los nombres
   $usuario = (isset($_POST["usuario"]) ? $_POST["usuario"] : "");
@@ -16,6 +15,8 @@ if ($_POST) {
   $sentencia->bindParam(":password", $password);
   $sentencia->bindParam(":correo", $correo);
   $sentencia->execute();
+
+  header("Location:index.php");
 }
 
 ?>
