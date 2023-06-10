@@ -1,3 +1,13 @@
+<?php
+include("../../db.php");
+
+$sentencia = $conexcion->prepare("SELECT * FROM `tbl_usuarios`");
+$sentencia->execute();
+$lista_tbl_usuarios = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+
 <!-- //* Aqui Esta El Header -->
 <?php include('../../templates/header.php'); ?>
 
@@ -21,16 +31,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="">
-            <td scope="row">1</td>
-            <td>Oscar Hugo</td>
-            <td>*************</td>
-            <td>Correo@correo.com</td>
-            <td>
-              <input name="btneditar" id="btneditar" class="btn btn-info" type="button" value="Editar"> |
-              <input name="btneliminar" id="btneliminar" class="btn btn-danger" type="button" value="Borrar">
-            </td>
-          </tr>
+          <?php foreach ($lista_tbl_usuarios as $registro) { ?>
+            <tr class="">
+              <td scope="row"><?php echo $registro['id']; ?></td>
+              <td><?php echo $registro['usuario']; ?></td>
+              <td>*************</td>
+              <td><?php echo $registro['email']; ?></td>
+              <td>
+                <a class="btn btn-success" href="editar.php?txtID=<?php echo $registro['id']; ?>" role="button">Editar</a>
+                |
+                <a class="btn btn-danger" href="index.php?txtID=<?php echo $registro['id']; ?>" role="button">Eliminar</a>
+              </td>
+            </tr>
+          <?php  }  ?>
         </tbody>
       </table>
     </div>
