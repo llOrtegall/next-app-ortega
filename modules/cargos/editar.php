@@ -20,6 +20,7 @@ if ($_POST) {
 	$sentencia->bindParam(":nombrecargo", $nombrecargo);
 	$sentencia->bindParam(":id", $txtID);
 	$sentencia->execute();
+	header("Location: index.php");
 }
 ?>
 
