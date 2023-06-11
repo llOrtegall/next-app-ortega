@@ -1,7 +1,9 @@
 <?php
 include("../../db.php");
 
-$sentencia = $conexcion->prepare("SELECT * FROM `tbl_empleados`");
+$sentencia = $conexcion->prepare("SELECT *,
+(SELECT nombrecargo FROM `tbl_puestos` WHERE tbl_puestos.id=tbl_empleados.idcargo limit 1) as puesto
+FROM `tbl_empleados`");
 $sentencia->execute();
 $lista_tbl_empleados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
@@ -45,7 +47,7 @@ $lista_tbl_empleados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 							</td>
 							<td><?php echo $registro['foto'] ?></td>
 							<td><?php echo $registro['cv'] ?></td>
-							<td><?php echo $registro['idcargo'] ?></td>
+							<td><?php echo $registro['puesto'] ?></td>
 							<td><?php echo $registro['fechaingreso'] ?></td>
 							<td>
 								<a name="" id="" class="btn btn-primary" href="#" role="button">Carta</a> |
