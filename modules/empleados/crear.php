@@ -1,3 +1,10 @@
+<?php
+include("../../db.php");
+if ($_POST) {
+	print_r($_POST);
+}
+?>
+
 <!-- //* Aqui Esta El Header -->
 <?php include('../../templates/header.php'); ?>
 
@@ -10,8 +17,8 @@
 				<input type="text" class="form-control" name="primernombre" id="primernombre">
 			</div>
 			<div class="mb-3">
-				<label for="segundonombre" class="form-label">Segundo Nombre</label>
-				<input type="text" class="form-control" name="segundonombre" id="segundonombre">
+				<label for="primerapellido" class="form-label">Primer Apellido</label>
+				<input type="text" class="form-control" name="primerapellido" id="primerapellido">
 			</div>
 			<div class="mb-3">
 				<label for="" class="form-label">Foto</label>
@@ -24,8 +31,8 @@
 		</div>
 		<div class="col">
 			<div class="mb-3">
-				<label for="primerapellido" class="form-label">Primer Apellido</label>
-				<input type="text" class="form-control" name="primerapellido" id="primerapellido">
+				<label for="segundonombre" class="form-label">Segundo Nombre</label>
+				<input type="text" class="form-control" name="segundonombre" id="segundonombre">
 			</div>
 			<div class="mb-3">
 				<label for="segundoapellido" class="form-label">Segundo Apellido</label>
