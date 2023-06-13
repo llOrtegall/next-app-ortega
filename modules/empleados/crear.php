@@ -1,8 +1,40 @@
 <?php
 include("../../db.php");
 if ($_POST) {
-	print_r($_POST);
+
+	$primernombre = (isset($_POST["primernombre"]) ? $_POST["primernombre"] : "");
+	$segundonombre = (isset($_POST["segundonombre"]) ? $_POST["segundonombre"] : "");
+	$primerapellido = (isset($_POST["primernombre"]) ? $_POST["primernombre"] : "");
+	$segundoapellido = (isset($_POST["segundoapellido"]) ? $_POST["segundoapellido"] : "");
+
+	$fechaingreso = (isset($_POST["fechaingreso"]) ? $_POST["fechaingreso"] : "");
+	$idpuesto = (isset($_POST["idpuesto"]) ? $_POST["idpuesto"] : "");
+
+	$foto = (isset($_FILES["foto"]["name"]) ? $_FILES["foto"]["name"] : "");
+	$cv = (isset($_FILES["cv"]["name"]) ? $_FILES["cv"]["name"] : "");
+
+	$sentencia = $conexcion->prepare("INSERT INTO `tbl_empleados` 
+	(`id`, `primernombre`, `segundonombre`, `primerapellido`, `segundoapellido`, `foto`, `cv`, `idcargo`, `fechaingreso`) 
+	VALUES (NULL, :primernombre, :segundonombre, :primerapellido, :segundoapellido, :foto, :cv, :idpuesto, :fechaingreso);");
+
+	$sentencia->bindParam(":primernombre", $primernombre);
+	$sentencia->bindParam(":segundonombre", $segundonombre);
+	$sentencia->bindParam(":primerapellido", $primerapellido);
+	$sentencia->bindParam(":segundoapellido", $segundoapellido);
+	$sentencia->bindParam(":fechaingreso", $fechaingreso);
+	$sentencia->bindParam(":idpuesto", $idpuesto);
+
+	$sentencia->bindParam(":foto", $foto);
+	$sentencia->bindParam(":cv", $cv);
+
+	$sentencia->execute();
+	header("Location: index.php");
 }
+
+//* consulta de puestos
+$sentencia = $conexcion->prepare("SELECT * FROM `tbl_puestos`");
+$sentencia->execute();
+$lista_tbl_cargos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!-- //* Aqui Esta El Header -->
@@ -42,10 +74,10 @@ if ($_POST) {
 		<div class="mb-3">
 			<label for="idpuesto" class="form-label">Puesto:</label>
 			<select class="form-select form-select-sm" name="idpuesto" id="idpuesto">
-				<option selected>Select one</option>
-				<option value="">New Delhi</option>
-				<option value="">Istanbul</option>
-				<option value="">Jakarta</option>
+
+				<?php foreach ($lista_tbl_cargos as $registro) { ?>
+					<option value="<?php echo $registro['id'] ?>"><?php echo $registro['nombrecargo'] ?></option>
+				<?php } ?>
 			</select>
 		</div>
 		<div class="row d-flex justify-content-evenly">
