@@ -34,14 +34,11 @@ if ($_POST) {
 		Cargos
 	</div>
 	<div class="card-body">
-
 		<form action="" method="post" enctype="multipart/form-data">
-
 			<div class="mb-3">
 				<label for="txtID" class="form-label">ID</label>
 				<input type="text" value="<?php echo $textID; ?>" class="form-control" readonly name="txtID" id="txtID" placeholder="ID">
 			</div>
-
 			<div class="mb-3">
 				<label for="nombrecargo" class="form-label">Nombre Del Cargo</label>
 				<input type="text" value="<?php echo $nombrecargo; ?>" class="form-control" name="nombrecargo" id="nombrecargo" placeholder="cargo">

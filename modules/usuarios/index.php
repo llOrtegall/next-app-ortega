@@ -15,9 +15,7 @@ if (isset($_GET['txtID'])) {
 
   header("Location: index.php");
 }
-
 ?>
-
 
 <!-- //* Aqui Esta El Header -->
 <?php include('../../templates/header.php'); ?>

@@ -1,10 +1,8 @@
 <?php
 include("../../db.php");
-
 //* Borrar Usuarios
 if (isset($_GET['txtID'])) {
 	$txtID = (isset($_GET['txtID'])) ? $_GET['txtID'] : "";
-
 	/*
 	$sentencia = $conexcion->prepare("DELETE FROM tbl_empleados WHERE id=:id");
 	$sentencia->bindParam(":id", $txtID);
@@ -17,8 +15,6 @@ $sentencia = $conexcion->prepare("SELECT *,
 FROM `tbl_empleados`");
 $sentencia->execute();
 $lista_tbl_empleados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-
-
 ?>
 
 <!-- //* Aqui Esta El Header -->
@@ -32,7 +28,6 @@ $lista_tbl_empleados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 		<a name="" id="" class="btn btn-primary" href="crear.php" role="button">
 			Agregar Registro</a>
 	</div>
-
 	<div class="card-body">
 		<div class="table-responsive-sm">
 			<table class="table">
@@ -75,10 +70,8 @@ $lista_tbl_empleados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 				</tbody>
 			</table>
 		</div>
-
 	</div>
 </div>
-
 
 <!-- //* Aqui Esta El Footer -->
 <?php include('../../templates/footer.php'); ?>
