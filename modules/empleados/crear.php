@@ -24,8 +24,25 @@ if ($_POST) {
 	$sentencia->bindParam(":fechaingreso", $fechaingreso);
 	$sentencia->bindParam(":idpuesto", $idpuesto);
 
-	$sentencia->bindParam(":foto", $foto);
-	$sentencia->bindParam(":cv", $cv);
+	//* codigo para adjuntar foto
+	$fecha_ = new DateTime();
+
+	$nombre_archivo_foto = ($foto != '') ? $fecha_->getTimestamp() . "_" . $_FILES["foto"]["name"] : "";
+	$tmp_foto = $_FILES["foto"]["tmp_name"];
+
+	if ($tmp_foto != '') {
+		move_uploaded_file($tmp_foto, "./" . $nombre_archivo_foto);
+	}
+	$sentencia->bindParam(":foto", $nombre_archivo_foto);
+
+	//* codigo para adjutnar cv
+	$nombre_archivo_cv = ($cv != '') ? $fecha_->getTimestamp() . "_" . $_FILES["cv"]["name"] : "";
+	$tmp_cv = $_FILES["cv"]["tmp_name"];
+
+	if ($tmp_cv != '') {
+		move_uploaded_file($tmp_cv, "./" . $nombre_archivo_cv);
+	}
+	$sentencia->bindParam(":cv", $nombre_archivo_cv);
 
 	$sentencia->execute();
 	header("Location: index.php");
