@@ -1,11 +1,23 @@
 <?php
 include("../../db.php");
 
+//* Borrar Usuarios
+if (isset($_GET['txtID'])) {
+	$txtID = (isset($_GET['txtID'])) ? $_GET['txtID'] : "";
+
+	/*
+	$sentencia = $conexcion->prepare("DELETE FROM tbl_empleados WHERE id=:id");
+	$sentencia->bindParam(":id", $txtID);
+	$sentencia->execute();
+	header("Location: index.php");*/
+}
+
 $sentencia = $conexcion->prepare("SELECT *,
 (SELECT nombrecargo FROM `tbl_puestos` WHERE tbl_puestos.id=tbl_empleados.idcargo limit 1) as puesto
 FROM `tbl_empleados`");
 $sentencia->execute();
 $lista_tbl_empleados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 
@@ -52,9 +64,11 @@ $lista_tbl_empleados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 							<td><?php echo $registro['puesto'] ?></td>
 							<td><?php echo $registro['fechaingreso'] ?></td>
 							<td>
-								<a name="" id="" class="btn btn-primary" href="#" role="button">Carta</a> |
-								<a name="" id="" class="btn btn-info" href="#" role="button">Editar</a> |
-								<a name="" id="" class="btn btn-danger" href="#" role="button">Eliminar</a>
+								<a name="" id="" class="btn btn-primary" href="#" role="button">Carta</a>
+								|
+								<a class="btn btn-success" href="editar.php?txtID=<?php echo $registro['id']; ?>" role="button">Editar</a>
+								|
+								<a class="btn btn-danger" href="index.php?txtID=<?php echo $registro['id']; ?>" role="button">Eliminar</a>
 							</td>
 						</tr>
 					<?php } ?>
