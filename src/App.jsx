@@ -9,13 +9,10 @@ export function App () {
   return (
     <Routes>
       <Route path="/" element={<Layout />} >
-        <Route path="/" element={<Home/>} />
+        <Route index element={<Home/>} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/products" element={<Products />} />
       </Route>
-      {/* <Route path="/" element={<Home />} />
-      <Route path="/about" element={<AboutUs />} />
-      <Route path="/products" element={<Products />} /> */}
     </Routes>
   )
 }
