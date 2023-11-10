@@ -1,18 +1,17 @@
-import { Home } from './pages/Home.jsx'
-import { AboutUs } from './pages/AboutUs.jsx'
+import { Layout } from './components/Layout.jsx'
 import { Route, Routes } from 'react-router-dom'
-import { Products } from './pages/Prodcuts.jsx'
-import { NavBar } from './components/NavBar.jsx'
+
+// import { AboutUs } from './pages/AboutUs.jsx'
+// import { Products } from './pages/Prodcuts.jsx'
+// import { Home } from './pages/Home.jsx'
 
 export function App () {
   return (
-    <>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/products" element={<Products />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />} />
+      {/* <Route path="/" element={<Home />} />
+      <Route path="/about" element={<AboutUs />} />
+      <Route path="/products" element={<Products />} /> */}
+    </Routes>
   )
 }
