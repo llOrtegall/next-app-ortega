@@ -11,7 +11,7 @@ export function App () {
       <Route path="/" element={<Layout />} >
         <Route index element={<Home/>} />
         <Route path="/about" element={<AboutUs />} />
-        <Route path="/products" element={<Products test={ 5 + 5 }/>} />
+        <Route path="/products/*" element={<Products test={ 5 + 5 }/>} />
       </Route>
     </Routes>
   )
